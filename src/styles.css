@@ -1,0 +1,130 @@
+/* ============================================================
+   Intelligent Reading — Global Design System
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ─── CSS Variables: Dark Theme (default) ─────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg:              #0d0f14;
+  --surface:         #13161f;
+  --surface-hover:   #1c2030;
+  --border:          #1f2436;
+  --text-primary:    #e8eaf0;
+  --text-muted:      #5a6380;
+  --accent:          #6366f1;
+  --accent-hover:    #4f52d9;
+  --accent-glow:     rgba(99, 102, 241, 0.25);
+  --danger:          #ef4444;
+
+  color-scheme: dark;
+}
+
+/* ─── CSS Variables: Light Theme ──────────────────────────── */
+[data-theme="light"] {
+  --bg:              #f4f5f8;
+  --surface:         #ffffff;
+  --surface-hover:   #f0f1f5;
+  --border:          #e2e4ec;
+  --text-primary:    #111827;
+  --text-muted:      #6b7280;
+  --accent:          #6366f1;
+  --accent-hover:    #4f52d9;
+  --accent-glow:     rgba(99, 102, 241, 0.15);
+  --danger:          #ef4444;
+
+  color-scheme: light;
+}
+
+/* ─── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ─── Selection ───────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ─── Focus ───────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Range input global styling ─────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--border);
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--surface);
+  cursor: pointer;
+}
+
+/* ─── Utility animations ──────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ─── App root ────────────────────────────────────────────── */
+app-root {
+  display: block;
+  height: 100%;
+}
